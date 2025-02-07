@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\ProductRepositoryInterface;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -17,7 +18,7 @@ class ProductController extends Controller
     //
     public function index()
     {
-        $products = Product::all();
+        $products = $this->productRepository->getAll();
         return view('welcome', compact('products'));
     }
 
